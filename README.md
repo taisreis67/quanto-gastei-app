@@ -1,5 +1,5 @@
-# Quanto gastei? App
-> Aplicativo para genrenciar gastos feitos com cartão de débito ou crédito.
+# Quanto gastei?
+> Aplicativo para genrenciar transações de debito ou crédito.
 
 O aplicativo permite que você cadastre suas transações de débito ou crétido, visualizar uma lista com as transações cadastradas e o valor total das duas transações.
 
