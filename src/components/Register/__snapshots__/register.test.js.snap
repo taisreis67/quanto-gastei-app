@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve renderizar o formulário para adcionar uma transação 1`] = `
+<Register>
+  <h1>
+    Cadastrar
+  </h1>
+</Register>
+`;

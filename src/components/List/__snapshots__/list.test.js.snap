@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve renderizar uma listagem com as transações adicionadas 1`] = `
+<List>
+  <h1>
+    Listar
+  </h1>
+</List>
+`;

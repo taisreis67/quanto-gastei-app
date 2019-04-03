@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve renderizar os dados da transação informada 1`] = `
+<Transaction
+  descricao="Uma nova transação de débito"
+  id={1}
+  tipo={1}
+  valor={200}
+>
+  <h1>
+    Transação
+  </h1>
+</Transaction>
+`;

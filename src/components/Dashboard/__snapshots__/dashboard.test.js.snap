@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve renderizar o dashboard com o valor total das transações 1`] = `
+<Dashboard>
+  <h1>
+    Dashboard
+  </h1>
+</Dashboard>
+`;
