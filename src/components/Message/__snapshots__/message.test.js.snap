@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve renderizar uma alerta com a menssagem passada. 1`] = `
+<Message
+  classMessage="success"
+  textMessage="A message"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <div
+        className="alert alert-success"
+        role="alert"
+      >
+        A message
+      </div>
+    </div>
+  </div>
+</Message>
+`;
