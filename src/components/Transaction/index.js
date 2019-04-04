@@ -1,11 +1,14 @@
-import  React, { Component } from 'react';
+import React from 'react';
 
-class Transaction extends Component {
-    render() {
-        return (
-            <h1>Transação</h1>
-        );
-    }
+const Transaction = (props) => {
+    const {
+        value,
+        description,
+    } = props;
+
+    return (
+        <li className="list-group-item">{value} | {description}</li>
+    );
 }
 
 export default Transaction;

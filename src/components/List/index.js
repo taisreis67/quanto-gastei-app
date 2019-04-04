@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import ls from 'local-storage';
+import Message from '../Message';
+import Transaction from '../Transaction';
 
 class List extends Component {
     constructor(props) {
@@ -10,8 +12,29 @@ class List extends Component {
         this.state = {
             transactions,
         };
+    }
 
-        console.log(transactions);
+    message = () => {
+        if (this.props.location.state) {
+            const {
+                textMessage,
+                classMessage,
+            } = this.props.location.state;
+
+            return <Message textMessage={textMessage} classMessage={classMessage} />;
+        }
+    }
+
+    listTransactions = () => {
+        const {
+            transactions,
+        } = this.state;
+
+        const list = transactions.map((transaction, index) => {
+            return <Transaction value={transaction[0].value} description={transaction[1].value} key={index} />;
+        });
+
+        return list;
     }
 
     render() {
@@ -28,14 +51,12 @@ class List extends Component {
                 </header>
 
                 <div className="container">
+                    {this.message()}
+
                     <div className="row">
                         <div className="col">
-                            <ul className="list-group">
-                                <li className="list-group-item">Cras justo odio</li>
-                                <li className="list-group-item">Dapibus ac facilisis in</li>
-                                <li className="list-group-item">Morbi leo risus</li>
-                                <li className="list-group-item">Porta ac consectetur ac</li>
-                                <li className="list-group-item">Vestibulum at eros</li>
+                            <ul className="list-group list-group-flush">
+                                {this.listTransactions()}
                             </ul>
                         </div>
                     </div>
