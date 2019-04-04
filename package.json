@@ -16,7 +16,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "validate": "^4.5.1"
+    "validator": "^10.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
