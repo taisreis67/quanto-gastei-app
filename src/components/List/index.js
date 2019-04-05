@@ -25,40 +25,42 @@ class List extends Component {
         }
     }
 
-    listTransactions = () => {
-        const {
-            transactions,
-        } = this.state;
+    listTransactions = (transactions) => {
+        transactions.reverse();
 
         const list = transactions.map((transaction, index) => {
-            return <Transaction value={transaction[0].value} description={transaction[1].value} key={index} />;
+            return <Transaction value={transaction[0]} description={transaction[1]} key={index} />;
         });
 
         return list;
     }
 
     render() {
-        return (
-            <article>
-                <header className="jumbotron jumbotron-fluid">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <h2 className="display-4">Transações</h2>
-                            </div>
-                        </div>
-                    </div>
-                </header>
+        const {
+            transactions,
+        } = this.state;
 
-                <div className="container">
+        if (transactions) {
+            return (
+                <article className="container">
                     {this.message()}
-
+    
                     <div className="row">
                         <div className="col">
                             <ul className="list-group list-group-flush">
-                                {this.listTransactions()}
+                                {this.listTransactions(transactions)}
                             </ul>
                         </div>
+                    </div>
+                </article>
+            );
+        }
+
+        return (
+            <article className="container">
+                <div className="row">
+                    <div className="col">
+                        Nenhuma transação cadastrada.
                     </div>
                 </div>
             </article>
