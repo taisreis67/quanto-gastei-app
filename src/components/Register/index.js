@@ -161,6 +161,8 @@ class Register extends Component {
             thousandsSeparatorSymbol: '.',
             allowDecimal: true,
             decimalSymbol: ',',
+            requireDecimal: true,
+            allowLeadingZeroes: true,
         });
 
         return (

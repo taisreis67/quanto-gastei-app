@@ -2,15 +2,13 @@
 
 exports[`Deve renderizar os dados da transação informada 1`] = `
 <Transaction
-  descricao="Uma nova transação de débito"
-  id={1}
-  tipo={1}
-  valor={200}
+  description="Uma nova transação de débito"
+  value="R$ 240,00"
 >
   <li
     className="list-group-item"
   >
-     | 
+    R$ 240,00 | Uma nova transação de débito
   </li>
 </Transaction>
 `;

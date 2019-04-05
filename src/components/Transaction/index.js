@@ -6,8 +6,17 @@ const Transaction = (props) => {
         description,
     } = props;
 
+    let newValue = value
+            .replace('R$ ', '')
+            .replace('.', '')
+            .replace(',', '.');
+
+    newValue = parseFloat(newValue);
+
+    newValue = String(newValue.toFixed(2)).replace('.', ',');
+
     return (
-        <li className="list-group-item">{value} | {description}</li>
+        <li className="list-group-item">{`R$ ${newValue} | ${description}`}</li>
     );
 }
 

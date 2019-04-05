@@ -24,7 +24,7 @@ class Dashboard extends Component {
     
             totalTransactions = values.reduce(sum);
     
-            totalTransactions = String(totalTransactions).replace('.', ',');
+            totalTransactions = String(totalTransactions.toFixed(2)).replace('.', ',');
         }
 
         this.state = {

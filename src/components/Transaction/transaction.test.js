@@ -5,10 +5,8 @@ import toJson from 'enzyme-to-json';
 
 it('Deve renderizar os dados da transação informada', () => {
     const props = {
-        id: 1,
-        valor: 200.00,
-        tipo: 1,
-        descricao: 'Uma nova transação de débito'
+        value: "R$ 240,00",
+        description: 'Uma nova transação de débito'
     };
 
     const transaction = mount(<Transaction {...props} />);
