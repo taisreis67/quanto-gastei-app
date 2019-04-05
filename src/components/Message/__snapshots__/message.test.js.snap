@@ -12,10 +12,22 @@ exports[`Deve renderizar uma alerta com a menssagem passada. 1`] = `
       className="col"
     >
       <div
-        className="alert alert-success"
+        className="alert alert-success alert-dismissible fade show"
         role="alert"
       >
         A message
+        <button
+          aria-label="Close"
+          className="close"
+          data-dismiss="alert"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
       </div>
     </div>
   </div>

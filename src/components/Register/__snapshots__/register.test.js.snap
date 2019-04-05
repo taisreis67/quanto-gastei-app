@@ -6,10 +6,10 @@ exports[`Deve renderizar o formulário para adcionar uma transação 1`] = `
     className="container"
   >
     <div
-      className="row"
+      className="card"
     >
       <div
-        className="col"
+        className="card-body"
       >
         <form
           className="form-register"
@@ -80,12 +80,12 @@ exports[`Deve renderizar o formulário para adcionar uma transação 1`] = `
             </div>
           </div>
           <button
-            className="btn btn-primary"
+            className="btn btn-block btn-primary"
             disabled={false}
             onClick={[Function]}
             type="button"
           >
-            cadastrar
+            adicionar
           </button>
         </form>
       </div>

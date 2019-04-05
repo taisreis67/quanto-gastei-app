@@ -6,12 +6,59 @@ exports[`Deve renderizar uma listagem com as transações adicionadas 1`] = `
     className="container"
   >
     <div
-      className="row"
+      className="card"
     >
       <div
-        className="col"
+        className="card-body"
       >
-        Nenhuma transação cadastrada.
+        <ul
+          className="list-group list-group-flush"
+        >
+          <Transaction
+            description="Tênis"
+            key="0"
+            value="R$ 230,50"
+          >
+            <li
+              className="list-group-item"
+            >
+              R$ 230,50
+               | 
+              Tênis
+            </li>
+          </Transaction>
+          <Transaction
+            description="Tênis"
+            key="1"
+            value="R$ 230,50"
+          >
+            <li
+              className="list-group-item"
+            >
+              R$ 230,50
+               | 
+              Tênis
+            </li>
+          </Transaction>
+        </ul>
+      </div>
+    </div>
+  </article>
+</List>
+`;
+
+exports[`Deve renderizar uma mensagem de nenhuma transação cadastrada 1`] = `
+<List>
+  <article
+    className="container"
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="card-body"
+      >
+        Nenhuma transação foi adicionada.
       </div>
     </div>
   </article>
