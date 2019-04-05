@@ -1,8 +1,6 @@
 # Quanto gastei?
 > Help to manager your debit or credit transactions.
 
-O aplicativo permite que você cadastre suas transações de débito ou crétido, visualizar uma lista com as transações cadastradas e o valor total das duas transações.
-
 The App allows you register your transactions, list the transactions already registered order by the newly transaction that was register and see total value of yours transactions.
 
 ## Requirements
