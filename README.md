@@ -1,9 +1,11 @@
 # Quanto gastei?
-> Aplicativo para genrenciar transações de debito ou crédito.
+> Help to manager your debit or credit transactions.
 
 O aplicativo permite que você cadastre suas transações de débito ou crétido, visualizar uma lista com as transações cadastradas e o valor total das duas transações.
 
-## Prerequisites
+The App allows you register your transactions, list the transactions already registered order by the newly transaction that was register and see total value of yours transactions.
+
+## Requirements
 
 You need have Node and Yarn installed.
 
@@ -45,13 +47,11 @@ Tais Reis
 [@taisreis67](https://twitter.com/taisreis67)
 taisrsduarte@gmail.com
 
-Distributed under the XYZ license. See ``LICENSE`` for more information.
-
-[https://github.com/yourname/github-link](https://github.com/dbader/)
+[https://github.com/taisreis67/quanto-gastei-app](https://github.com/taisreis67/quanto-gastei-app)
 
 ## Contributing
 
-1. Fork it (<https://github.com/yourname/yourproject/fork>)
+1. Fork it (<https://github.com/taisreis67/quanto-gastei-app/fork>)
 2. Create your feature branch (`git checkout -b feature/name-your-feature`)
 3. Commit your changes (`git commit -am 'Describe your feature'`)
 4. Push to the branch (`git push origin feature/name-your-feature`)
