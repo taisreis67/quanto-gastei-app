@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Header from '../Header';
+import './style/app.scss';
 
 class App extends Component {
     render() {

@@ -4,8 +4,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-import 'bootstrap/scss/bootstrap.scss';
-
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

@@ -1,0 +1,102 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
+
+$theme-colors: (
+    "primary": #e3ff5f,
+    "danger": #e3ff5f
+);
+
+$colors: (
+    "porange": #ff5325,
+    "rose-dark": #540045,
+    "pgreen": #e3ff5f,
+    "white": #FFFFFF,
+);
+
+$porange-opacity: rgba(255, 113, 75, 0.25);
+
+.navbar {
+    background-color: color("rose-dark");
+}
+
+.btn-primary {
+    color: #ffffff;
+
+    @include button-variant(
+        color("porange"),
+        darken(color("porange"), 7.5%), 
+        darken(color("porange"), 10%), 
+        lighten(color("porange"),5%), 
+        lighten(color("porange"), 10%), 
+        darken(color("porange"),30%));
+}
+
+.btn-outline-primary {
+    @include button-outline-variant(
+        color("porange"), color("white"), 
+        lighten(color("porange"),5%), 
+        color("porange"));
+}
+
+.alert-success {
+    color: color("white");
+    background-color: color("pgreen");
+    border-color: color("pgreen");
+}
+
+header {
+    margin-bottom: 2em;
+}
+
+.card {
+    border: 1px solid color("porange");
+
+    .card-header {
+        color: color("white");
+        background-color: color("porange");
+        border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    .card-body {
+        color: color("porange");
+    }
+}
+
+label {
+    color: color("porange");
+}
+
+.form-control {
+    color: color("gray-dark");
+    border: 1px solid color("porange");
+
+    &:focus {
+        color: color("gray-dark");
+        border-color: color("porange");
+        box-shadow: 0 0 0 0.2rem $porange-opacity;
+    }
+
+    &.is-invalid {
+        border-color: color("porange");
+        background: none;
+
+        &.is-invalid:focus {
+            border-color: color("porange");
+            box-shadow: 0 0 0 0.2rem $porange-opacity;
+        }
+    }
+}
+
+.invalid-field-text {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: color("porange");
+}
+
+.list-group-item {
+    border: 1px solid color("porange");
+}
+
+.close:hover {
+    color: color("white");
+}
