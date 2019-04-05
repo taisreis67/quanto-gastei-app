@@ -2,157 +2,49 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import validator from 'validator';
 import ls from 'local-storage';
+import MaskedInput from 'react-text-mask';
+import createNumberMask from 'text-mask-addons/dist/createNumberMask';
+import Message from '../Message';
 
 class Register extends Component {
     constructor(props) {
         super(props);
-        
-        const requestAPI = {
-            responseTransaction: '',
-            classResponse: '',
-            fieldDisable: false,
-        };
 
         const transactionValue = {
             id: 1,
+            question: 'Qual o valor da transação?',
             fieldType: 'text',
             label: 'Valor da transação',
             name: 'transaction-value',
             value: '',
             isValid: true,
             message: '',
-            requered: true,
+            required: true,
         };
 
         const transactionDescription = {
             id: 2,
+            question: 'Adicione uma descrição',
             fieldType: 'text',
             label: 'Adicione uma descrição',
             name: 'transaction-description',
             value: '',
             isValid: true,
             message: '',
-            requered: true,
-        };
-
-        const transactionType = {
-            id: 3,
-            fieldType: 'select',
-            label: 'Qual o tipo da transação?',
-            name: 'transaction-type',
-            value: '',
-            isValid: true,
-            message: '',
-            requered: true,
-            options: [
-                {
-                    label: 'Débito',
-                    value: '1',
-                },
-                {
-                    label: 'Crédito',
-                    value: '2',
-                },
-            ],
+            required: true,
         };
 
         const formItens = [
             transactionValue,
             transactionDescription,
-            transactionType,
         ];
 
         this.state = {
             formItens,
-            ...requestAPI,
+            textMessage: '',
+            classMessage: '',
+            fieldDisable: false,
         };
-    }
-
-    text = (item) => {
-        const {
-            fieldDisable,
-        } = this.state;
-
-        const classNameElement = classNames('form-group',
-            { 'has-error': !item.isValid });
-
-        return (
-            <div className="content-form" key={item.id}>
-                <div className={`form-group ${classNameElement}`}>
-                    <label htmlFor={item.name}>
-                        {item.question}
-                        {
-                            (item.required) ?
-                            <span className="text-danger"> *</span> :
-                            ''
-                        }
-                    </label>
-
-                    <input
-                        type="text"
-                        name={item.name}
-                        className={`form-control ${(item.message !== '')
-                            ? 'is-invalid' : ''}`}
-                        value={item.value}
-                        onChange={this.onChange}
-                        disabled={fieldDisable}
-                    />
-
-                    <div className="invalid-field-text">{item.message}</div>
-                </div>
-            </div>
-        );
-    }
-
-    selectOptions = (({options}) => {
-		return options.map((option, index) => {
-			return <option key={index} value={option.value}>{option.label}</option>;
-		});
-	});
-
-    select = (item) => {
-		const {
-			fieldDisable,
-        } = this.state;
-
-		const classNameElement = classNames('form-group',
-			{ 'has-error': !item.isValid });
-
-		return (
-			<div className="content-form" key={item.id}>
-				<div className={`form-group ${classNameElement}`}>
-					<label htmlFor={item.name}>
-						{item.label}
-						{
-							(item.required) ?
-							<span className="text-danger"> *</span> :
-							''
-						}
-					</label>
-
-					<select 
-						className={`form-control ${(item.message !== '')
-						? 'is-invalid' : ''}`}
-						name={item.name}
-						onChange={this.onChange}
-						disabled={fieldDisable}
-					>
-						<option value="">Selecione</option>
-						{this.selectOptions(item)}
-					</select>
-
-					<div className="invalid-field-text">{item.message}</div>
-				</div>
-			</div>
-		);
-	}
-
-    formCriation = () => {
-        const {
-            formItens
-        } = this.state;
-
-        return formItens.map(item => this[item.fieldType](item));
     }
 
     transactionSave = () => {
@@ -160,22 +52,29 @@ class Register extends Component {
             formItens
         } = this.state;
 
+        const data = formItens.map((item) => item.value);
+
         this.setState({
-            responseTransaction: '',
+            message: '',
             fieldDisable: true,
         });
 
         try {
-            ls.set('transactions', formItens);
+            let transactions = ls.get('transactions') || [];
+            transactions.push(data);
+            ls.set('transactions', transactions);
 
-            this.setState({
-                responseTransaction: 'Transação salva com sucesso.',
-                classResponse: 'success',
-            });            
+            this.props.history.push({
+                pathname: '/list',
+                state: { 
+                    textMessage: 'Transação cadastrada com sucesso.',
+                    classMessage: 'success',
+                }
+            });
         } catch (error) {
             this.setState({
-                responseTransaction: 'Erro ao enviar os dados.',
-                classResponse: 'danger',
+                message: 'Erro ao enviar os dados.',
+                classMessage: 'danger',
             });
         }
 
@@ -236,55 +135,86 @@ class Register extends Component {
         if (this.formIsValid()) {
             this.transactionSave();
         }
-
-        this.props.history.push('/list');       
     };
+
+    message = () => {
+        const {
+            textMessage,
+            classMessage,
+        } = this.state;
+
+        return <Message textMessage={textMessage} classMessage={classMessage} />;
+    }
 
     render() {
         const {
             fieldDisable,
-            responseTransaction,
             classResponse,
+            formItens
         } = this.state;
 
+        const classNameValue = classNames('form-group', { 'has-error': !formItens[0].isValid });
+        const classNameDescription = classNames('form-group', { 'has-error': !formItens[1].isValid });
+
+        const numberMask = createNumberMask({
+            prefix: 'R$ ',
+            thousandsSeparatorSymbol: '.',
+            allowDecimal: true,
+            decimalSymbol: ',',
+        });
+
         return (
-            <section>
-                <header className="jumbotron jumbotron-fluid">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <h2 className="display-4">Transações</h2>
-                            </div>
-                        </div>
-                    </div>
-                </header>
+            <section className="container">
+                <div className="row">
+                    <div className="col">
+                        <form className="form-register">
+                            <div className="content-form">
+                                <div className={`form-group ${classNameValue}`}>
+                                    <label htmlFor={formItens[1].name}>
+                                        {formItens[0].question}
+                                        {(formItens[0].required) ? <span> *</span> : ''}
+                                    </label>
 
-                <div className="container">
-                    <div className="row">
-                        <div className="col">
-                            <form className="form-register">
-                                {this.formCriation()}
+                                    <MaskedInput
+                                        mask={numberMask}
+                                        className={`form-control ${(formItens[0].message !== '') ? 'is-invalid' : ''}`}
+                                        name={formItens[0].name}
+                                        value={formItens[0].value}
+                                        onChange={this.onChange}
+                                        disabled={fieldDisable}
+                                        guide={false}
+                                    />
 
-                                <button
-                                    className="btn btn-primary"
-                                    type="button"
-                                    disabled={fieldDisable}
-                                    onClick={this.onSubmit}
-                                >
-                                    {fieldDisable ? 'cadastrando...' : 'cadastrar'}
-                                </button>
-                            </form>
-
-                            { classResponse !== ''
-                            ? (
-                                <div
-                                    className={`response-create-account mt-3 alert alert-${classResponse}`}
-                                >
-                                    {responseTransaction}
+                                    <div className="invalid-field-text">{formItens[0].message}</div>
                                 </div>
-                            )
-                            : ''}
-                        </div>
+                            </div>
+
+                            <div className="content-form">
+                                <div className={`form-group ${classNameDescription}`}>
+                                    <label htmlFor={formItens[1].name}>
+                                        {formItens[1].question}
+                                        {(formItens[1].required) ? <span> *</span> : ''}
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        className={`form-control ${(formItens[1].message !== '') ? 'is-invalid' : ''}`}
+                                        name={formItens[1].name}
+                                        value={formItens[1].value}
+                                        onChange={this.onChange}
+                                        disabled={fieldDisable}
+                                    />
+
+                                    <div className="invalid-field-text">{formItens[1].message}</div>
+                                </div>
+                            </div>
+
+                            <button className="btn btn-primary" type="button" disabled={fieldDisable} onClick={this.onSubmit} >
+                                {fieldDisable ? 'cadastrando...' : 'cadastrar'}
+                            </button>
+                        </form>
+
+                        {classResponse === 'danger' ? this.message() : ''}
                     </div>
                 </div>
             </section>
