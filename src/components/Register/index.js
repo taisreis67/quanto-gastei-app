@@ -165,8 +165,8 @@ class Register extends Component {
 
         return (
             <section className="container">
-                <div className="row">
-                    <div className="col">
+                <div className="card">
+                    <div className="card-body">
                         <form className="form-register">
                             <div className="content-form">
                                 <div className={`form-group ${classNameValue}`}>
@@ -209,8 +209,8 @@ class Register extends Component {
                                 </div>
                             </div>
 
-                            <button className="btn btn-primary" type="button" disabled={fieldDisable} onClick={this.onSubmit} >
-                                {fieldDisable ? 'cadastrando...' : 'cadastrar'}
+                            <button className="btn btn-block btn-primary" type="button" disabled={fieldDisable} onClick={this.onSubmit} >
+                                {fieldDisable ? 'adicionando...' : 'adicionar'}
                             </button>
                         </form>
 

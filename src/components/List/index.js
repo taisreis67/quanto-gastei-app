@@ -15,7 +15,7 @@ class List extends Component {
     }
 
     message = () => {
-        if (this.props.location.state) {
+        if (this.props.length > 0) {
             const {
                 textMessage,
                 classMessage,
@@ -45,8 +45,8 @@ class List extends Component {
                 <article className="container">
                     {this.message()}
     
-                    <div className="row">
-                        <div className="col">
+                    <div className="card">
+                        <div className="card-body">
                             <ul className="list-group list-group-flush">
                                 {this.listTransactions(transactions)}
                             </ul>
@@ -58,9 +58,9 @@ class List extends Component {
 
         return (
             <article className="container">
-                <div className="row">
-                    <div className="col">
-                        Nenhuma transação cadastrada.
+                <div className="card">
+                    <div className="card-body">
+                        Nenhuma transação foi adicionada.
                     </div>
                 </div>
             </article>
