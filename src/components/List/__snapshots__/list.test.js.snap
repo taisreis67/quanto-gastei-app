@@ -2,8 +2,18 @@
 
 exports[`Deve renderizar uma listagem com as transações adicionadas 1`] = `
 <List>
-  <h1>
-    Listar
-  </h1>
+  <article
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        Nenhuma transação cadastrada.
+      </div>
+    </div>
+  </article>
 </List>
 `;

@@ -2,8 +2,40 @@
 
 exports[`Deve renderizar o dashboard com o valor total das transações 1`] = `
 <Dashboard>
-  <h1>
-    Dashboard
-  </h1>
+  <section
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-header"
+          >
+            Resumo
+          </div>
+          <div
+            className="card-body"
+          >
+            <h5
+              className="card-title"
+            >
+              Saldo total das transações:
+            </h5>
+            <p
+              className="card-text"
+            >
+              R$ 0
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </Dashboard>
 `;

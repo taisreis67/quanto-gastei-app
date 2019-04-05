@@ -2,8 +2,94 @@
 
 exports[`Deve renderizar o formulário para adcionar uma transação 1`] = `
 <Register>
-  <h1>
-    Cadastrar
-  </h1>
+  <section
+    className="container"
+  >
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <form
+          className="form-register"
+        >
+          <div
+            className="content-form"
+          >
+            <div
+              className="form-group form-group"
+            >
+              <label
+                htmlFor="transaction-description"
+              >
+                Qual o valor da transação?
+                <span>
+                   *
+                </span>
+              </label>
+              <t
+                className="form-control "
+                disabled={false}
+                guide={false}
+                mask={[Function]}
+                name="transaction-value"
+                onChange={[Function]}
+                render={[Function]}
+                value=""
+              >
+                <input
+                  className="form-control "
+                  defaultValue=""
+                  disabled={false}
+                  name="transaction-value"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                />
+              </t>
+              <div
+                className="invalid-field-text"
+              />
+            </div>
+          </div>
+          <div
+            className="content-form"
+          >
+            <div
+              className="form-group form-group"
+            >
+              <label
+                htmlFor="transaction-description"
+              >
+                Adicione uma descrição
+                <span>
+                   *
+                </span>
+              </label>
+              <input
+                className="form-control "
+                disabled={false}
+                name="transaction-description"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+              <div
+                className="invalid-field-text"
+              />
+            </div>
+          </div>
+          <button
+            className="btn btn-primary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            cadastrar
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 </Register>
 `;
