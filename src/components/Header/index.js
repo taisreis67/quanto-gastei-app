@@ -8,9 +8,9 @@ import Register from '../Register';
 class Header extends Component {
     render() {
         return (
-            <header>
-                <Router>
-                    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <Router>
+                <header>
+                    <nav className="navbar navbar-expand-lg navbar-dark">
                         <div className="container">
                             <span className="navbar-brand mb-0 h1">Quanto Gastei?</span>
 
@@ -33,12 +33,12 @@ class Header extends Component {
                             </div>
                         </div>
                     </nav>
+                </header>
 
-                    <Route path="/" exact component={Dashboard} />
-                    <Route path="/list" exact component={List} />
-                    <Route path="/register" exact component={Register} />
-                </Router>
-            </header>
+                <Route path="/" exact component={Dashboard} />
+                <Route path="/list" exact component={List} />
+                <Route path="/register" exact component={Register} />
+            </Router>
         );
     }
 }
